@@ -1,0 +1,2 @@
+export STRAVA_TOKEN
+export STRAVA_ID
