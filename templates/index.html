@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cycling</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="year biking">
+  <meta name="author" content="Jack Dwyer">
+
+  <link rel="stylesheet" href="dist/css/normalize.css">
+  <link rel="stylesheet" href="dist/css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <section class="header">
+      <h2 class="title">Distance to date: <strong>500km</strong></h2>
+      <p><a href="2015_index.html">2015</a> <strong>|</strong> <a href="index.html">2016</a></p>
+    </section>
+
+    <div id="map"></div>
+  </div>
+
+  <script>
+    var mymap = L.map('map').setView([40.777275, -73.966484], 12);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', 
+      {
+        maxZoom: 18,
+        id: 'jackdwyer.l1hnmm8m',
+        accessToken: 'pk.eyJ1IjoiamFja2R3eWVyIiwiYSI6IkV6ZDJydWsifQ.W_4q5ucf9n8Abd4LvjIqRw'
+      }).addTo(mymap);
+
+    var myLayer = L.geoJson().addTo(mymap);
+   
+    {{ theLines }}
+
+    var myStyle1 = {
+        "color": "#ff0000",
+        "weight": 3,
+        "opacity": 0.3
+    };
+
+    L.geoJson(cyclelines, {
+        style: myStyle1
+    }).addTo(mymap);
+
+  </script>
+
+</body>
+</html>
