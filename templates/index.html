@@ -19,7 +19,7 @@
 
   <div class="container">
     <section class="header">
-      <h2 class="title">Distance to date: <strong>500km</strong></h2>
+      <h2 class="title">Distance to date: <strong>{{ distance }}km</strong></h2>
       <p><a href="2015_index.html">2015</a> <strong>|</strong> <a href="index.html">2016</a></p>
     </section>
 
@@ -27,7 +27,8 @@
   </div>
 
   <script>
-    var mymap = L.map('map').setView([40.777275, -73.966484], 12);
+    var mymap = L.map('map', { zoomControl: false }).setView([40.777275, -73.966484], 12);
+    mymap.scrollWheelZoom.disable();
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', 
       {
