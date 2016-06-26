@@ -43,7 +43,6 @@ for year in years.keys():
     end = len(years[year]['coords'])
     for el in years[year]['coords']:
         year_string += json.dumps(el)
-        print(el)
 
         if not i == end-1:
             year_string += ","
